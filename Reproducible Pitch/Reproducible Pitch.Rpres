@@ -1,0 +1,64 @@
+Reproducible Pitch For Air Quality
+=================================
+title : "Analysis on Daily Air Quality Measurements in New York May to Sep 1973"
+author: "Kumar Shaket"
+date: "29-05-2021"
+autosize: true
+
+Introduction
+========================================================
+
+## Coursera Reproducible Pitch
+
+### See the Regression Models Course Project  
+
+- URL: *https://github.com/kumarshaket/DevelopingDataProductWeek4Assignment*
+- Find here all the data that have been use for this presentation and also for the first part of the data Science Project: "First, you will create a Shiny application and deploy it on Rstudio's servers.Second, you will use Slidify or Rstudio Presenter to prepare a reproducible pitch presentation about your application."
+
+### Find all details here
+URL: *https://www.coursera.org/learn/data-products/peer/tMYrn/course-project-shiny-application-and-reproducible-pitch*
+
+---
+Table Analysis
+========================================================
+
+### AirQuality Measurement
+
+> Daily air quality measurements in New York, May to September 1973.
+
+
+### Format
+> A data frame with 153 observations on 6 variables.
+
+>|Field|Data Type|Description|
+------|---------|-----------|
+|Ozone |numeric	|Ozone (ppb)|
+|Solar.R|numeric|Solar R (lang)|
+|Wind	|numeric	|Wind (mph)
+|Temp	|numeric	|Temperature (degrees F)
+|Month|	numeric	|Month (1--12)
+|	Day	|numeric|	Day of month (1--31)
+
+Table Summary
+========================================================
+```{r}
+library(datasets)
+head(airquality, 3)
+summary(airquality)
+```
+
+Main Code For Generating Plot
+========================================================
+
+
+ >formulaText <- reactive({paste("Ozone~",input$variable)})
+            
+  >  formulaTextPoint <- reactive(
+        {
+            paste("Ozone~","as.integer(",input$variable,")")
+        }
+    )
+    
+  >  fit <- reactive({
+        lm(as.formula(formulaTextPoint()),data=AirData)
+
